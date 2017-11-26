@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   def calculate_charge_amount
-    calculate_total_order_amount
+    self.calculate_total_order_amount
     return (self.total.to_f*100).to_i
   end
 
