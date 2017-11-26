@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
   def process(options)
     self.order_status = "processed"
     if self.save
+      #Post order event will be done here.
+      #TODO: Also we can move this to background job.
       OrderMailer.order_confirmation(options[:billing_email], id).deliver
       return true
     else
