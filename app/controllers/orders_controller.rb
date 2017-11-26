@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   include UserCart
-  # process order
   def create
     @order = Order.new(order_params)
     @card.add_items(@order.ordered_items)
