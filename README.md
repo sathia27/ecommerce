@@ -1,4 +1,4 @@
-# Points to be Noted
+# Code Refactoring
 
 1. To run test case, do bundle install
 2. rspec specs/services/card_type_detector_service_spec.rb
