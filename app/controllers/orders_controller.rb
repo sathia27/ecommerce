@@ -1,11 +1,10 @@
 class OrdersController < ApplicationController
-
+  include UserCart
   # process order
   def create
     @order = Order.new(order_params)
     @card.add_items(@order.ordered_items)
-    if if_payment_call_made?
-      @order.order_status = 'processed'
+    if payment_call_made?
       if @order.process(order_params)
         destroy_cart
         flash[:success] = "You successfully ordered!"
@@ -41,7 +40,7 @@ class OrdersController < ApplicationController
 
   end
 
-  def if_payment_call_made?
+  def payment_call_made?
     # Get the card type
     # Get credit card object from ActiveMerchant
     credit_card = get_credit_card
